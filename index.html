@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>簡子筠 作品集</title>
+<meta name="description" content="臺北市立大學學習與媒材設計學系・幼兒教育師資培育學程　簡子筠作品集">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f3;
+    --paper: #ffffff;
+    --ink: #24302c;
+    --muted: #64706b;
+    --line: #e4e0d6;
+    --accent: #2f5d50;
+    --accent-soft: #e6efe9;
+    --warm: #d98f4e;
+    --warm-soft: #fbeedd;
+    --shadow: 0 1px 2px rgba(36,48,44,.06), 0 8px 24px rgba(36,48,44,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161b19; --paper: #1f2623; --ink: #e9eeea; --muted: #a3ada8; --line: #2f3834;
+      --accent: #8fc4ad; --accent-soft: #24332d; --warm: #e8a96f; --warm-soft: #3a2c1f;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161b19; --paper: #1f2623; --ink: #e9eeea; --muted: #a3ada8; --line: #2f3834;
+    --accent: #8fc4ad; --accent-soft: #24332d; --warm: #e8a96f; --warm-soft: #3a2c1f;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+    line-height: 1.8; font-size: 16px;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  /* 頂部導覽 */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
+  nav .brand { font-family: "Noto Serif TC", serif; font-weight: 700; color: var(--ink); text-decoration: none; }
+  nav ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+  nav ul a { color: var(--muted); text-decoration: none; }
+  nav ul a:hover { color: var(--accent); }
+
+  /* 開頭 */
+  header.hero { padding: 72px 0 48px; }
+  .hero .eyebrow { color: var(--warm); font-weight: 700; letter-spacing: .12em; font-size: 14px; }
+  .hero h1 { font-family: "Noto Serif TC", serif; font-size: clamp(36px, 6vw, 56px); line-height: 1.25; margin: 8px 0 16px; }
+  .hero h1 small { display: block; font-size: .42em; color: var(--muted); font-family: "Noto Sans TC", sans-serif; font-weight: 500; margin-top: 8px; }
+  .hero p.lead { max-width: 640px; color: var(--muted); font-size: 17px; margin: 0; }
+  .hero .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .tag { display: inline-block; padding: 2px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 14px; font-weight: 500; }
+  .tag.warm { background: var(--warm-soft); color: var(--warm); }
+
+  section { padding: 40px 0; }
+  h2.sec { font-family: "Noto Serif TC", serif; font-size: 28px; margin: 0 0 6px; }
+  p.sec-sub { color: var(--muted); margin: 0 0 28px; }
+
+  /* 作品卡 */
+  .work {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+    box-shadow: var(--shadow); overflow: hidden; margin-bottom: 32px;
+    display: grid; grid-template-columns: 1.1fr 1fr;
+  }
+  .work.flip { grid-template-columns: 1fr 1.1fr; }
+  .work.flip .media { order: 2; }
+  .work > * { min-width: 0; }
+  .work .media { background: var(--accent-soft); padding: 20px; display: grid; gap: 12px; align-content: center; }
+  .work .media img { border-radius: 10px; box-shadow: var(--shadow); background: #fff; }
+  .work .media.two { grid-template-columns: 1fr 1fr; align-items: start; }
+  .work .media.three { grid-template-columns: 1fr 1fr 1fr; align-items: start; }
+  .work .body { padding: 28px 28px 24px; }
+  .work .num { color: var(--warm); font-weight: 700; font-size: 14px; letter-spacing: .1em; }
+  .work h3 { font-family: "Noto Serif TC", serif; font-size: 24px; margin: 4px 0 4px; line-height: 1.4; }
+  .work .meta { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .work p { margin: 0 0 12px; text-align: justify; }
+  .work dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 14px 0 16px; font-size: 15px; }
+  .work dt { color: var(--accent); font-weight: 700; white-space: nowrap; }
+  .work dd { margin: 0; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 999px;
+    background: var(--accent); color: var(--paper); text-decoration: none; font-weight: 500; font-size: 15px;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* 工具 */
+  .tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+  .tool { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; align-items: center; gap: 12px; }
+  .ico { width: 40px; height: 40px; border-radius: 9px; display: grid; place-items: center; font-weight: 700; font-size: 15px; flex: none; font-family: system-ui, sans-serif; }
+  .tool span { font-size: 14px; line-height: 1.4; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 760px) {
+    nav ul { display: none; }
+    header.hero { padding: 48px 0 32px; }
+    .work, .work.flip { grid-template-columns: minmax(0, 1fr); }
+    .work.flip .media { order: 0; }
+    .work .body { padding: 22px 20px 20px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">簡子筠 作品集</a>
+    <ul>
+      <li><a href="#works">作品</a></li>
+      <li><a href="#tools">工具</a></li>
+      <li><a href="#about">關於我</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">PORTFOLIO</div>
+    <h1>簡子筠<small>臺北市立大學 學習與媒材設計學系 三年級・幼兒教育師資培育學程</small></h1>
+    <p class="lead">來自六龜，喜歡觀察孩子、也喜歡把想法做成看得見、摸得到的媒材。這裡收錄我在大學期間參與的教育遊戲、繪本與視覺設計作品，希望未來把這些經驗帶進幼兒教育現場。</p>
+    <div class="tags">
+      <span class="tag">遊戲式學習</span>
+      <span class="tag">教材教具設計</span>
+      <span class="tag">繪本創作</span>
+      <span class="tag warm">視覺設計</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="works">
+  <div class="wrap">
+    <h2 class="sec">作品</h2>
+    <p class="sec-sub">以團隊合作完成的課程作品為主，點按鈕可直接開啟線上版本。</p>
+
+    <article class="work">
+      <div class="media two">
+        <img src="img/power-poster.jpg" alt="電網守護者活動海報" loading="lazy">
+        <img src="img/power-web.jpg" alt="電網守護者網頁首頁畫面" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="num">01・網頁遊戲</div>
+        <h3>電網守護者</h3>
+        <div class="meta">大三上「學習設計與實作」｜與台灣電力公司合作｜團隊作品</div>
+        <p>以「電力如何來到每個人家中」為主題的網頁遊戲與數位百科。我與一位同學共同負責網頁設計，把較多知識性的文字整理成孩子讀得懂的內容。</p>
+        <p>作品帶到臺北市立大學附小，與中高年級學生實際互動。我們觀察到，規則簡單、有競爭與倒數計時的遊戲最能吸引孩子，也體會到帶領者的說明與回應會影響孩子投入的程度。</p>
+        <dl>
+          <dt>我的角色</dt><dd>網頁設計、知識內容編排</dd>
+          <dt>對象</dt><dd>國小中高年級</dd>
+        </dl>
+        <div class="btns"><a class="btn" href="https://u11317029.github.io/powergame0614/" target="_blank" rel="noopener">開啟網頁 ↗</a></div>
+      </div>
+    </article>
+
+    <article class="work flip">
+      <div class="media">
+        <img src="img/recycle-web.jpg" alt="垃圾轉世計畫遊戲畫面" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="num">02・互動教育遊戲</div>
+        <h3>垃圾轉世計畫：回收分類遊戲</h3>
+        <div class="meta">回收分類主題｜團隊作品</div>
+        <p>把回收分類知識轉化為孩子能動手操作、邊玩邊學的遊戲：一次出現一件垃圾，讓玩家判斷該放進哪一類，並以分數、時間與愛心增加挑戰感。</p>
+        <p>大二「教材教具與遊戲式學習」課程中，我們以回收分類為主題設計互動教具，並到玩具窩與孩子實際遊玩；我參與教案構想與教具設計，從孩子的反應檢視設計是否好懂、好玩。</p>
+        <dl>
+          <dt>我的角色</dt><dd>教案構想、教具與遊戲設計</dd>
+          <dt>學到的事</dt><dd>教材需要在現場測試，依孩子的反應調整</dd>
+        </dl>
+        <div class="btns"><a class="btn" href="https://u11317029.github.io/game1234/" target="_blank" rel="noopener">開啟遊戲 ↗</a></div>
+      </div>
+    </article>
+
+    <article class="work">
+      <div class="media three">
+        <img src="img/book-1.jpg" alt="回收怪獸的秘密 繪本封面" loading="lazy">
+        <img src="img/book-9.jpg" alt="繪本內頁：回收站" loading="lazy">
+        <img src="img/book-13.jpg" alt="繪本內頁：小哲與朋友" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="num">03・繪本創作</div>
+        <h3>回收怪獸的秘密</h3>
+        <div class="meta">大一｜四人小組繪本創作｜適讀年齡 6–10 歲</div>
+        <p>台北流傳著「回收怪獸」會在夜裡吞下瓶瓶罐罐的傳說。好奇的小哲跟蹤後發現，怪獸其實是載著回收物的回收車，進而認識回收站的工作，並和朋友一起推廣正確回收。</p>
+        <p>繪本希望讓孩子認識台北的回收車與分類知識。草圖以手繪完成，線稿使用 Krita、上色使用 Procreate，再以 Illustrator 排版。</p>
+        <dl>
+          <dt>主題</dt><dd>環境教育、垃圾分類</dd>
+          <dt>工具</dt><dd>Krita、Procreate、Illustrator</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="work flip">
+      <div class="media two">
+        <img src="img/temple-poster.jpg" alt="蚋裡的廟 主視覺海報" loading="lazy" style="grid-column: 1 / -1">
+        <img src="img/temple-cis.jpg" alt="蚋裡的廟 基本設計手冊封面" loading="lazy">
+        <img src="img/temple-rice.jpg" alt="平安米包裝設計" loading="lazy">
+        <img src="img/temple-brochure.jpg" alt="三折頁設計" loading="lazy" style="grid-column: 1 / -1">
+      </div>
+      <div class="body">
+        <div class="num">04・視覺識別設計</div>
+        <h3>蚋裡的廟：加蚋廣照宮品牌設計</h3>
+        <div class="meta">大二「視覺傳達設計」｜五人小組作品</div>
+        <p>以台北萬華加蚋地區的廣照宮為對象，從廟宇故事發展品牌角色與視覺識別，讓年輕世代重新認識在地信仰與社區文化。</p>
+        <p>作品包含標誌與標準字、色彩規範、基本設計手冊，以及主視覺海報、三折頁、平安米包裝等應用設計，練習把文化故事轉化成一致而親切的視覺語言。</p>
+        <dl>
+          <dt>內容</dt><dd>CIS 手冊、海報、三折頁、包裝</dd>
+          <dt>工具</dt><dd>Illustrator、Photoshop</dd>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="wrap">
+    <h2 class="sec">常用工具</h2>
+    <p class="sec-sub">用來製作教具、繪本、海報與網頁的工具。</p>
+    <div class="tools">
+      <div class="tool"><div class="ico" style="background:#001e36;color:#31a8ff">Ps</div><span>Photoshop</span></div>
+      <div class="tool"><div class="ico" style="background:#330000;color:#ff9a00">Ai</div><span>Illustrator</span></div>
+      <div class="tool"><div class="ico" style="background:#49021f;color:#ff3366">Id</div><span>InDesign<br><small style="color:var(--muted)">學習中</small></span></div>
+      <div class="tool"><div class="ico" style="background:#2b579a;color:#fff">W</div><span>Word</span></div>
+      <div class="tool"><div class="ico" style="background:#c43e1c;color:#fff">P</div><span>PowerPoint</span></div>
+      <div class="tool"><div class="ico" style="background:#217346;color:#fff">X</div><span>試算表</span></div>
+      <div class="tool"><div class="ico" style="background:#5b4b8a;color:#fff">剪</div><span>影片剪輯</span></div>
+      <div class="tool"><div class="ico" style="background:#e07a3f;color:#fff">3D</div><span>Nomad Sculpt</span></div>
+      <div class="tool"><div class="ico" style="background:#2f5d50;color:#fff">AI</div><span>ChatGPT・Claude<br><small style="color:var(--muted)">網頁製作</small></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec">關於我</h2>
+    <p style="max-width:720px;text-align:justify">成長過程中，兩位師長的陪伴讓我決定走上教育這條路。我習慣留意他人的表情與情緒，也重視細節；與幼兒相處時，我能自然放鬆地回應他們。現在正在修習幼兒教育師資培育學程，希望結合媒材設計的能力，為幼兒製作合適的教具、故事圖卡與活動素材，未來有機會回到家鄉服務。</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 簡子筠｜臺北市立大學 學習與媒材設計學系。作品皆為課程團隊作品，著作權屬原創作團隊。</div>
+</footer>
+</body>
+</html>
