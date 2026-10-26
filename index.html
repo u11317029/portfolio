@@ -7,27 +7,27 @@
 <meta name="description" content="臺北市立大學學習與媒材設計學系・幼兒教育師資培育學程　簡子筠作品集">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6f3ec;
+    --bg: #f4f1ea;
     --paper: #fffdf8;
     --ink: #1f2a26;
-    --muted: #6b746f;
+    --muted: #68716c;
     --line: #e2ddd0;
     --accent: #2f5d50;
-    --side: 260px;
-    --shadow: 0 2px 4px rgba(31,42,38,.05), 0 18px 40px -12px rgba(31,42,38,.18);
+    --tab-w: 52px;
+    --shadow: 0 2px 4px rgba(31,42,38,.05), 0 18px 40px -14px rgba(31,42,38,.2);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #141816; --paper: #1c221f; --ink: #ecefe9; --muted: #a2aaa5; --line: #2c3430; --accent: #8fc4ad;
-      --shadow: 0 2px 4px rgba(0,0,0,.3), 0 18px 40px -12px rgba(0,0,0,.5);
+      --shadow: 0 2px 4px rgba(0,0,0,.3), 0 18px 40px -14px rgba(0,0,0,.55);
     }
   }
   :root[data-theme="dark"] {
     --bg: #141816; --paper: #1c221f; --ink: #ecefe9; --muted: #a2aaa5; --line: #2c3430; --accent: #8fc4ad;
-    --shadow: 0 2px 4px rgba(0,0,0,.3), 0 18px 40px -12px rgba(0,0,0,.5);
+    --shadow: 0 2px 4px rgba(0,0,0,.3), 0 18px 40px -14px rgba(0,0,0,.55);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 24px; }
@@ -37,218 +37,160 @@
   }
   img { max-width: 100%; display: block; }
   a { color: inherit; }
-  .serif { font-family: "Noto Serif TC", serif; }
-  .num-font { font-family: "DM Serif Display", Georgia, serif; }
+  main { padding-right: calc(var(--tab-w) + 16px); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
 
-  /* ===== 側邊作品選單（電腦） ===== */
-  .side {
-    position: fixed; inset: 0 auto 0 0; width: var(--side); padding: 36px 28px;
-    border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 28px;
-    background: var(--bg); z-index: 20;
+  /* ===== 側邊檔案夾分頁 ===== */
+  .tabs {
+    position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 30;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
   }
-  .side .logo { text-decoration: none; }
-  .side .logo b { display: block; font-family: "Noto Serif TC", serif; font-size: 26px; font-weight: 900; letter-spacing: .08em; }
-  .side .logo span { font-size: 12px; color: var(--muted); letter-spacing: .2em; }
-  .side .label { font-size: 12px; letter-spacing: .24em; color: var(--muted); margin-bottom: 8px; }
-  .menu { list-style: none; margin: 0; padding: 0; position: relative; }
-  .menu::before { content: ""; position: absolute; left: 13px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
-  .menu a {
-    display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 10px;
-    padding: 7px 0; text-decoration: none; color: var(--muted); font-size: 15px; line-height: 1.4;
-    transition: color .25s;
+  .tab {
+    --h: min(40px, calc((100vh - 60px) / 14 - 3px));
+    height: var(--h); width: var(--tab-w); display: flex; align-items: center; gap: 10px;
+    padding: 0 12px 0 14px; border-radius: 12px 0 0 12px; overflow: hidden; white-space: nowrap;
+    background: var(--c); color: #fff; text-decoration: none; font-size: 14px; line-height: 1;
+    box-shadow: inset -6px 0 8px -6px rgba(0,0,0,.25);
+    transition: width .35s cubic-bezier(.2,.8,.2,1), box-shadow .3s, filter .3s;
+    filter: saturate(.75) brightness(1.02);
   }
-  .menu .dot {
-    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; position: relative;
-    font-family: "DM Serif Display", serif; font-size: 13px; background: var(--bg); border: 1px solid var(--line);
-    transition: background .25s, color .25s, border-color .25s, transform .25s;
-  }
-  .menu a:hover { color: var(--ink); }
-  .menu a.on { color: var(--ink); font-weight: 700; }
-  .menu a.on .dot { background: var(--c); border-color: var(--c); color: #fff; transform: scale(1.08); }
-  .menu small { display: block; font-weight: 400; font-size: 12px; color: var(--muted); }
-  .side .foot { margin-top: auto; font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
-  .side .foot a { text-decoration: none; }
-  .side .foot a:hover { color: var(--ink); }
-
-  /* ===== 手機頂部滑動選單 ===== */
-  .topbar { display: none; }
-
-  main { margin-left: var(--side); }
-  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 48px; }
+  .tab .n { font-family: "DM Serif Display", Georgia, serif; font-size: 16px; min-width: 22px; text-align: center; flex: none; }
+  .tab .t { opacity: 0; transition: opacity .2s; font-weight: 500; }
+  .tab:hover, .tab:focus-visible { width: 220px; filter: none; }
+  .tab:hover .t, .tab:focus-visible .t { opacity: 1; }
+  .tab.on { width: 240px; filter: none; box-shadow: -8px 6px 18px -6px rgba(0,0,0,.35); }
+  .tab.on .t { opacity: 1; transition-delay: .12s; }
+  .tab.plain { --c: #3a4541; }
 
   /* ===== 開頭 ===== */
-  .hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 72px 0 40px; }
+  .hero { padding: 88px 0 48px; }
   .hero .eyebrow { font-size: 13px; letter-spacing: .3em; color: var(--accent); font-weight: 700; }
-  .hero h1 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(44px, 7vw, 88px); line-height: 1.15; margin: 14px 0 18px; letter-spacing: .04em; }
+  .hero h1 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(40px, 6.4vw, 80px); line-height: 1.18; margin: 14px 0 18px; letter-spacing: .04em; }
   .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero .lead { max-width: 620px; font-size: 18px; color: var(--muted); margin: 0; text-align: justify; }
-  .hero .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; font-size: 14px; color: var(--muted); }
+  .hero .lead { max-width: 640px; font-size: 18px; color: var(--muted); margin: 0; text-align: justify; }
+  .hero .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 24px; font-size: 14px; color: var(--muted); }
   .hero .meta b { color: var(--ink); font-weight: 500; }
 
-  /* 作品目錄：橫向滑動卡片 */
-  .index-head { display: flex; align-items: end; justify-content: space-between; margin: 56px 0 14px; gap: 12px; }
-  .index-head h2 { margin: 0; font-size: 14px; letter-spacing: .24em; color: var(--muted); font-weight: 500; }
-  .arrows { display: flex; gap: 8px; }
-  .arrows button {
-    width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper);
-    color: var(--ink); cursor: pointer; font-size: 16px;
+  /* 作品目錄：檔案夾卡片 */
+  .index-title { margin: 56px 0 18px; font-size: 13px; letter-spacing: .26em; color: var(--muted); font-weight: 500; }
+  .index { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 26px 16px; }
+  .index a { text-decoration: none; position: relative; padding-top: 22px; display: block; }
+  .index a::before {
+    content: attr(data-n); position: absolute; top: 0; left: 0; height: 26px; padding: 0 14px;
+    background: var(--c); color: #fff; border-radius: 10px 10px 0 0; font-family: "DM Serif Display", serif; font-size: 14px; line-height: 26px;
   }
-  .arrows button:hover { border-color: var(--ink); }
-  .rail {
-    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, 30%); gap: 18px;
-    overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 18px; scrollbar-width: thin;
-  }
-  .rail a {
-    scroll-snap-align: start; text-decoration: none; background: var(--paper); border-radius: 18px;
-    overflow: hidden; box-shadow: var(--shadow); transition: transform .3s;
-    display: flex; flex-direction: column;
-  }
-  .rail a:hover { transform: translateY(-4px); }
-  .rail .thumb { aspect-ratio: 4 / 3; background: var(--c); overflow: hidden; }
-  .rail .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; }
-  .rail a:hover .thumb img { transform: scale(1.04); }
-  .rail .cap { padding: 14px 16px 16px; display: grid; gap: 2px; }
-  .rail .cap .n { font-family: "DM Serif Display", serif; color: var(--c); font-size: 15px; }
-  .rail .cap b { font-size: 16px; }
-  .rail .cap span { font-size: 13px; color: var(--muted); }
+  .index .card { background: var(--paper); border-top: 4px solid var(--c); border-radius: 0 12px 12px 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform .25s; }
+  .index a:hover .card { transform: translateY(-4px); }
+  .index .thumb { aspect-ratio: 4 / 3; background: color-mix(in srgb, var(--c) 15%, var(--paper)); }
+  .index .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .index .cap { padding: 10px 12px 12px; line-height: 1.45; }
+  .index .cap b { display: block; font-size: 15px; }
+  .index .cap span { font-size: 12px; color: var(--muted); }
 
-  /* ===== 作品區塊 ===== */
-  .work { padding: 96px 0 40px; border-top: 1px solid var(--line); }
-  .work-head { display: grid; grid-template-columns: auto 1fr; gap: 0 28px; align-items: end; margin-bottom: 30px; }
-  .big-num {
-    font-family: "DM Serif Display", serif; font-size: clamp(88px, 12vw, 150px); line-height: .8; color: transparent;
-    -webkit-text-stroke: 1.5px var(--c);
+  /* ===== 作品：檔案夾 ===== */
+  .work { padding: 64px 0 8px; }
+  .folder { position: relative; }
+  .folder-tab {
+    display: inline-flex; align-items: center; gap: 12px; height: 44px; padding: 0 24px;
+    background: var(--c); color: #fff; border-radius: 16px 16px 0 0; font-size: 14px; letter-spacing: .08em; font-weight: 500;
+    position: relative; z-index: 1;
   }
-  .work-head .kind { display: inline-block; font-size: 13px; letter-spacing: .14em; color: #fff; background: var(--c); padding: 2px 12px; border-radius: 999px; }
-  .work-head h2 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(30px, 4vw, 44px); line-height: 1.3; margin: 10px 0 0; }
-  .work-head .sub { color: var(--muted); font-size: 15px; margin-top: 4px; }
-
-  .cover {
-    border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); cursor: zoom-in;
-    background: color-mix(in srgb, var(--c) 18%, var(--paper)); padding: clamp(14px, 3vw, 34px);
+  .folder-tab .n { font-family: "DM Serif Display", serif; font-size: 20px; letter-spacing: 0; }
+  .folder-body {
+    position: relative; background: color-mix(in srgb, var(--c) 6%, var(--paper));
+    border-top: 6px solid var(--c); border-radius: 0 20px 20px 20px; padding: 40px 44px 32px; box-shadow: var(--shadow);
   }
-  .cover img { border-radius: 12px; width: 100%; max-height: 640px; object-fit: contain; margin: 0 auto; box-shadow: 0 10px 30px -10px rgba(0,0,0,.25); }
-
-  .work-body { display: grid; grid-template-columns: 1.35fr 1fr; gap: 44px; margin-top: 40px; }
+  /* 檔案夾後方露出的紙張 */
+  .folder-body::before {
+    content: ""; position: absolute; left: 28%; right: 26px; top: -18px; height: 18px;
+    background: color-mix(in srgb, var(--c) 22%, var(--paper)); border-radius: 10px 10px 0 0; z-index: -1;
+  }
+  .work-head h2 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.3; margin: 0; }
+  .work-head .sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+  .cover { margin-top: 26px; border-radius: 16px; overflow: hidden; cursor: zoom-in; background: color-mix(in srgb, var(--c) 14%, var(--paper)); padding: clamp(12px, 2.4vw, 28px); }
+  .cover img { border-radius: 10px; width: 100%; max-height: 620px; object-fit: contain; margin: 0 auto; box-shadow: 0 10px 30px -12px rgba(0,0,0,.3); }
+  .work-body { display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; margin-top: 32px; }
   .work-body p { margin: 0 0 14px; text-align: justify; }
-  .work-body p:first-child::first-letter { font-family: "Noto Serif TC", serif; font-size: 1.6em; color: var(--c); font-weight: 900; }
-  .facts { border-top: 2px solid var(--c); padding-top: 14px; display: grid; gap: 14px; align-content: start; }
+  .facts { border-top: 2px solid var(--c); padding-top: 12px; display: grid; gap: 12px; align-content: start; margin: 0; }
   .facts div { display: grid; gap: 2px; }
-  .facts dt { font-size: 12px; letter-spacing: .2em; color: var(--muted); }
+  .facts dt { font-size: 12px; letter-spacing: .2em; color: var(--c); font-weight: 700; }
   .facts dd { margin: 0; font-size: 15px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; padding: 10px 20px; border-radius: 999px;
-    background: var(--c); color: #fff; text-decoration: none; font-weight: 500; font-size: 15px; width: max-content;
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 999px;
+    background: var(--c); color: #fff; text-decoration: none; font-weight: 500; font-size: 14px; border: 1px solid var(--c);
     transition: transform .2s, box-shadow .2s;
   }
   .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -8px var(--c); }
+  .btn.ghost { background: transparent; color: var(--c); }
 
-  /* 圖庫：橫向滑動 */
-  .gallery-head { display: flex; justify-content: space-between; align-items: center; margin: 44px 0 12px; }
-  .gallery-head span { font-size: 12px; letter-spacing: .24em; color: var(--muted); }
-  .gallery {
-    display: grid; grid-auto-flow: column; grid-auto-columns: auto; gap: 16px; overflow-x: auto;
-    scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: thin;
-  }
-  .gallery figure { margin: 0; scroll-snap-align: start; cursor: zoom-in; }
-  .gallery img { height: 300px; width: auto; max-width: none; border-radius: 12px; background: #fff; box-shadow: var(--shadow); }
-  .gallery video { height: 300px; width: auto; border-radius: 12px; background: #000; box-shadow: var(--shadow); display: block; }
-  .btns { display: flex; flex-wrap: wrap; gap: 8px; }
-  .btn.ghost { background: transparent; color: var(--c); border: 1px solid var(--c); }
-  .btn.ghost:hover { background: var(--c); color: #fff; }
-  .gallery figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
-
-  .next {
-    display: flex; justify-content: flex-end; margin-top: 36px;
-  }
-  .next a { text-decoration: none; color: var(--muted); font-size: 14px; display: inline-flex; gap: 10px; align-items: center; }
+  .gallery-title { margin: 34px 0 10px; font-size: 12px; letter-spacing: .24em; color: var(--muted); }
+  .gallery { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 12px; scrollbar-width: thin; }
+  .gallery figure { margin: 0; flex: none; scroll-snap-align: start; }
+  .gallery img, .gallery video { height: 280px; width: auto; max-width: none; border-radius: 10px; background: #fff; box-shadow: var(--shadow); cursor: zoom-in; display: block; }
+  .gallery video { background: #000; cursor: auto; }
+  .gallery img[data-src] { width: 200px; background: color-mix(in srgb, var(--c) 12%, var(--paper)); }
+  .gallery figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; max-width: 420px; }
+  .next { display: flex; justify-content: flex-end; margin-top: 22px; }
+  .next a { text-decoration: none; color: var(--muted); font-size: 14px; }
   .next a b { color: var(--ink); font-weight: 500; }
-  .next a:hover b { color: var(--accent); }
 
   /* ===== 工具與關於 ===== */
-  .plain { padding: 96px 0 40px; border-top: 1px solid var(--line); }
-  .plain h2 { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: 34px; margin: 0 0 24px; }
-  .tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
-  .tool { background: var(--paper); border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); }
+  .plain-sec { padding: 72px 0 8px; }
+  .plain-sec .folder-body { --c: #3a4541; }
+  .plain-sec .folder-tab { --c: #3a4541; background: #3a4541; }
+  .tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .tool { background: var(--paper); border-radius: 14px; padding: 16px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow); }
   .ico { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; font-weight: 700; font-size: 15px; flex: none; font-family: system-ui, sans-serif; }
   .tool span { font-size: 14px; line-height: 1.4; }
   .tool small { color: var(--muted); }
-  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
   .about p { margin: 0; text-align: justify; }
   .about blockquote { margin: 0; font-family: "Noto Serif TC", serif; font-size: 22px; line-height: 1.7; border-left: 3px solid var(--accent); padding-left: 20px; }
   footer { padding: 48px 0 64px; color: var(--muted); font-size: 13px; }
 
   /* ===== 燈箱 ===== */
-  .lightbox {
-    position: fixed; inset: 0; background: rgba(12,16,14,.92); display: none; place-items: center; z-index: 50; padding: 24px; cursor: zoom-out;
-  }
+  .lightbox { position: fixed; inset: 0; background: rgba(12,16,14,.92); display: none; place-items: center; z-index: 50; padding: 24px; cursor: zoom-out; }
   .lightbox.open { display: grid; }
   .lightbox img { max-height: 90vh; max-width: 94vw; border-radius: 10px; }
 
-  /* 進場動畫 */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
-  .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .tab, .tab .t { transition: none; }
   }
 
   /* ===== 平板與手機 ===== */
-  @media (max-width: 1000px) {
-    .side { display: none; }
-    main { margin-left: 0; }
-    .topbar {
-      display: block; position: sticky; top: 0; z-index: 20;
-      background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar .row { display: flex; align-items: center; gap: 12px; padding: 10px 16px 0; }
-    .topbar .row b { font-family: "Noto Serif TC", serif; font-weight: 900; letter-spacing: .06em; }
-    .chips { display: flex; gap: 8px; overflow-x: auto; padding: 10px 16px 12px; scroll-snap-type: x proximity; scrollbar-width: none; }
-    .chips::-webkit-scrollbar { display: none; }
-    .chips a {
-      flex: none; scroll-snap-align: start; text-decoration: none; font-size: 14px; padding: 5px 14px; border-radius: 999px;
-      border: 1px solid var(--line); color: var(--muted); background: var(--paper); white-space: nowrap;
-    }
-    .chips a.on { background: var(--c, var(--accent)); border-color: var(--c, var(--accent)); color: #fff; }
-    html { scroll-padding-top: 110px; }
-    .wrap { padding: 0 24px; }
-    .hero { min-height: auto; padding-top: 48px; }
-    .rail { grid-auto-columns: minmax(220px, 70%); }
-    .work-body { grid-template-columns: 1fr; gap: 24px; }
-    .about { grid-template-columns: 1fr; gap: 20px; }
+  @media (max-width: 900px) {
+    .wrap { padding: 0 20px; }
+    .work-body { grid-template-columns: 1fr; gap: 20px; }
+    .about { grid-template-columns: 1fr; gap: 18px; }
+    .folder-body { padding: 28px 24px 24px; }
   }
   @media (max-width: 600px) {
-    .gallery video { height: 260px; }
-    .wrap { padding: 0 16px; }
-    .work { padding-top: 64px; }
-    .work-head { grid-template-columns: 1fr; }
-    .big-num { font-size: 76px; margin-bottom: 10px; }
-    .gallery img { height: 210px; }
+    :root { --tab-w: 30px; }
+    main { padding-right: calc(var(--tab-w) + 2px); }
+    .wrap { padding: 0 14px; }
+    .tab { --h: min(32px, calc((100vh - 40px) / 14 - 3px)); padding: 0 6px 0 7px; gap: 8px; border-radius: 9px 0 0 9px; }
+    .tab .n { font-size: 13px; min-width: 16px; }
+    .tab:hover { width: var(--tab-w); }
+    .tab:hover .t { opacity: 0; }
+    .tab.on { width: 40px; }
+    .tab.on .t { opacity: 0; }
+    .tab.on.peek { width: 190px; }
+    .tab.on.peek .t { opacity: 1; }
+    .hero { padding-top: 48px; }
     .hero .lead { font-size: 16px; }
+    .index { grid-template-columns: repeat(2, 1fr); gap: 22px 10px; }
+    .folder-tab { height: 38px; padding: 0 16px; font-size: 13px; }
+    .folder-body { padding: 22px 16px 18px; border-radius: 0 16px 16px 16px; }
+    .gallery img, .gallery video { height: 210px; }
+    .work { padding-top: 48px; }
   }
 </style>
 </head>
 <body>
 
-<!-- 側邊作品選單 -->
-<aside class="side" aria-label="作品選單">
-  <a class="logo" href="#top"><b>簡子筠</b><span>PORTFOLIO 2026</span></a>
-  <div>
-    <div class="label">WORKS</div>
-    <ul class="menu" id="menu"></ul>
-  </div>
-  <div class="foot">
-    <a href="#tools">常用工具</a>
-    <a href="#about">關於我</a>
-  </div>
-</aside>
-
-<!-- 手機頂部選單 -->
-<div class="topbar">
-  <div class="row"><b>簡子筠 作品集</b></div>
-  <nav class="chips" id="chips" aria-label="作品選單"></nav>
-</div>
+<nav class="tabs" id="tabs" aria-label="作品分頁"></nav>
 
 <main>
   <header class="hero wrap" id="top">
@@ -259,39 +201,40 @@
       <span><b>臺北市立大學</b>　學習與媒材設計學系 三年級</span>
       <span><b>師培</b>　幼兒教育師資培育學程</span>
     </div>
-
-    <div class="index-head">
-      <h2>作品目錄</h2>
-      <div class="arrows">
-        <button type="button" data-scroll="-1" aria-label="上一張">←</button>
-        <button type="button" data-scroll="1" aria-label="下一張">→</button>
-      </div>
-    </div>
-    <div class="rail" id="rail"></div>
+    <div class="index-title">作品目錄　·　點選或用右側分頁切換</div>
+    <div class="index" id="index"></div>
   </header>
 
   <div id="works"></div>
 
-  <section class="plain wrap reveal" id="tools">
-    <h2>常用工具</h2>
-    <div class="tools">
-      <div class="tool"><div class="ico" style="background:#001e36;color:#31a8ff">Ps</div><span>Photoshop</span></div>
-      <div class="tool"><div class="ico" style="background:#330000;color:#ff9a00">Ai</div><span>Illustrator</span></div>
-      <div class="tool"><div class="ico" style="background:#49021f;color:#ff3366">Id</div><span>InDesign<br><small>學習中</small></span></div>
-      <div class="tool"><div class="ico" style="background:#2b579a;color:#fff">W</div><span>Word</span></div>
-      <div class="tool"><div class="ico" style="background:#c43e1c;color:#fff">P</div><span>PowerPoint</span></div>
-      <div class="tool"><div class="ico" style="background:#217346;color:#fff">X</div><span>試算表</span></div>
-      <div class="tool"><div class="ico" style="background:#5b4b8a;color:#fff">剪</div><span>影片剪輯</span></div>
-      <div class="tool"><div class="ico" style="background:#e07a3f;color:#fff">3D</div><span>Nomad Sculpt</span></div>
-      <div class="tool"><div class="ico" style="background:#2f5d50;color:#fff">AI</div><span>ChatGPT・Claude<br><small>網頁製作</small></span></div>
+  <section class="plain-sec wrap" id="tools">
+    <div class="folder">
+      <div class="folder-tab">常用工具</div>
+      <div class="folder-body">
+        <div class="tools">
+          <div class="tool"><div class="ico" style="background:#001e36;color:#31a8ff">Ps</div><span>Photoshop</span></div>
+          <div class="tool"><div class="ico" style="background:#330000;color:#ff9a00">Ai</div><span>Illustrator</span></div>
+          <div class="tool"><div class="ico" style="background:#49021f;color:#ff3366">Id</div><span>InDesign<br><small>學習中</small></span></div>
+          <div class="tool"><div class="ico" style="background:#2b579a;color:#fff">W</div><span>Word</span></div>
+          <div class="tool"><div class="ico" style="background:#c43e1c;color:#fff">P</div><span>PowerPoint</span></div>
+          <div class="tool"><div class="ico" style="background:#217346;color:#fff">X</div><span>試算表</span></div>
+          <div class="tool"><div class="ico" style="background:#5b4b8a;color:#fff">剪</div><span>影片剪輯</span></div>
+          <div class="tool"><div class="ico" style="background:#e07a3f;color:#fff">3D</div><span>Nomad Sculpt</span></div>
+          <div class="tool"><div class="ico" style="background:#2f5d50;color:#fff">AI</div><span>ChatGPT・Claude<br><small>網頁製作</small></span></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="plain wrap reveal" id="about">
-    <h2>關於我</h2>
-    <div class="about">
-      <blockquote>希望成為溫暖人心、<br>願意理解孩子處境的老師。</blockquote>
-      <p>成長過程中，兩位師長的陪伴讓我決定走上教育這條路。我習慣留意他人的表情與情緒，也重視細節；與幼兒相處時，我能自然放鬆地回應他們。現在正在修習幼兒教育師資培育學程，希望結合媒材設計的能力，為幼兒製作合適的教具、故事圖卡與活動素材，未來有機會回到家鄉服務。</p>
+  <section class="plain-sec wrap" id="about">
+    <div class="folder">
+      <div class="folder-tab">關於我</div>
+      <div class="folder-body">
+        <div class="about">
+          <blockquote>希望成為溫暖人心、<br>願意理解孩子處境的老師。</blockquote>
+          <p>成長過程中，兩位師長的陪伴讓我決定走上教育這條路。我習慣留意他人的表情與情緒，也重視細節；與幼兒相處時，我能自然放鬆地回應他們。現在正在修習幼兒教育師資培育學程，希望結合媒材設計的能力，為幼兒製作合適的教具、故事圖卡與活動素材，未來有機會回到家鄉服務。</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -363,11 +306,22 @@ const WORKS = [
     cover: ['toy-6023.jpg', '怪獸回收箱教具'],
     text: [
       '以回收分類為主題設計的互動教具。每個回收類別都是一隻小怪獸造型的回收箱，孩子依照遊戲規則抽取任務、把垃圾「餵」給正確的怪獸，在遊戲中練習玻璃、鐵鋁罐、紙類等分類。',
-      '我們把教具帶到玩具窩，與孩子實際遊玩。我參與教案構想、教具設計與規則版面編排，並從孩子的反應檢視規則是否好懂、教具是否好操作。同主題我們也延伸製作了網頁版的回收分類遊戲。'
+      '我們把教具帶到玩具窩，與孩子實際遊玩。我參與教案構想、教具設計與規則版面編排，並從孩子的反應檢視規則是否好懂、教具是否好操作。'
     ],
     facts: [['我的角色', '教案構想、教具設計、規則與版面編排'], ['學到的事', '教材需要在現場測試，依孩子的反應調整']],
-    links: [['https://u11317029.github.io/game1234/', '玩網頁版回收遊戲']],
-    gallery: [im('toy-6022.jpg', '遊戲規則看板'), im('toy-6017.jpg', '玩具窩現場佈置'), im('toy-6027.jpg', '教具與活動空間'), im('recycle-web.jpg', '網頁版：垃圾轉世計畫')]
+    gallery: [im('toy-6022.jpg', '遊戲規則看板'), im('toy-6017.jpg', '玩具窩現場佈置'), im('toy-6027.jpg', '教具與活動空間')]
+  },
+  {
+    id: 'recycle', color: '#2f8f83', kind: '網頁遊戲', title: '垃圾轉世計畫',
+    sub: '回收分類網頁遊戲｜團隊作品', short: '回收分類網頁遊戲',
+    cover: ['rg-play.jpg', '遊戲畫面'],
+    text: [
+      '一款讓孩子在網頁上練習精細回收分類的遊戲。畫面上一次出現一件垃圾，玩家要在倒數時間內點選正確的回收類別，答對累積分數，答錯會失去愛心，讓分類知識在快節奏的挑戰中被反覆練習。',
+      '遊戲開始前有分步驟的教學引導，讓第一次遊玩的孩子也能看懂規則；另一個版本則把各種垃圾設計成角色，搭配圖鑑介紹它們該如何回收。'
+    ],
+    facts: [['我的角色', '設計與版面編排'], ['設計重點', '倒數計時、分數與愛心機制、分步驟教學']],
+    links: [['https://u11317029.github.io/game1234/', '開啟遊戲']],
+    gallery: [im('rg-tutorial.jpg', '遊戲教學引導'), im('rg-play2.jpg', '分類挑戰'), im('rg-rogue.jpg', '垃圾角色圖鑑版')]
   },
   {
     id: 'book', color: '#c98a2b', kind: '繪本創作', title: '回收怪獸的秘密',
@@ -375,9 +329,9 @@ const WORKS = [
     cover: ['bookc-1.jpg', '繪本封面'],
     text: [
       '台北流傳著「回收怪獸」會在夜裡吞下瓶瓶罐罐的傳說。好奇的小哲跟蹤後發現，怪獸其實是載著回收物的回收車，進而認識回收站的工作，並和朋友一起推廣正確回收。',
-      '繪本希望讓孩子認識台北的回收車與分類知識。草圖以手繪完成，線稿使用 Krita、上色使用 Procreate，最後以 Illustrator 完成整本繪本的排版。'
+      '繪本希望讓孩子認識台北的回收車與分類知識。草圖以手繪完成，線稿使用 Krita、上色使用 Procreate，最後以 Illustrator 完成整本繪本的排版與文字編排。'
     ],
-    facts: [['我的角色', '繪本設計與排版（角色繪製除外）'], ['主題', '環境教育、垃圾分類'], ['工具', 'Krita、Procreate、Illustrator']],
+    facts: [['我的角色', '排版與文字編排'], ['主題', '環境教育、垃圾分類'], ['工具', 'Krita、Procreate、Illustrator']],
     gallery: [im('bookc-7.jpg', '內頁'), im('bookc-9.jpg', '內頁'), im('bookc-13.jpg', '內頁：回收站'), im('bookc-15.jpg', '內頁'), im('bookc-17.jpg', '內頁'), im('bookc-19.jpg', '內頁'), im('bookc-26.jpg', '封底')]
   },
   {
@@ -438,95 +392,90 @@ const WORKS = [
   {
     id: 'other', color: '#5f7f8c', kind: '課堂作品', title: '其他課堂作品',
     sub: '插畫、海報與手作', short: '插畫、海報與手作',
-    cover: ['other-823.jpg', '桌遊主視覺：活過今晚'],
+    cover: ['other-poster.jpg', '海報：時空之約'],
     text: [
       '其他課堂中完成的作品，包含角色插畫、主視覺海報，以及編織與花藝等手作，記錄我在不同媒材上的嘗試。'
     ],
     facts: [['媒材', '數位插畫、海報、編織、花藝']],
     gallery: [
       im('other-2129.jpg', '角色插畫'), im('other-2130.jpg', '角色插畫'), im('other-2131.jpg', '角色插畫'), im('other-2132.jpg', '角色插畫'),
-      im('other-1135.jpg', '海報：時空之約'), im('other-1123.jpg', '手作編織'), im('other-1131.jpg', '花藝'), im('other-1245.jpg', '花藝')
+      im('other-823.jpg', '桌遊主視覺：活過今晚'), im('other-1123.jpg', '手作編織'), im('other-1131.jpg', '花藝'), im('other-1245.jpg', '花藝')
     ]
   }
 ];
 
 const pad = (i) => String(i + 1).padStart(2, '0');
 const el = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
-
-const menu = document.getElementById('menu');
-const chips = document.getElementById('chips');
-const rail = document.getElementById('rail');
+const tabs = document.getElementById('tabs');
+const index = document.getElementById('index');
 const works = document.getElementById('works');
 
-WORKS.forEach((w, i) => {
-  const n = pad(i);
-  menu.append(el(`<li><a href="#${w.id}" style="--c:${w.color}"><span class="dot">${n}</span><span>${w.title}<small>${w.kind}</small></span></a></li>`));
-  chips.append(el(`<a href="#${w.id}" style="--c:${w.color}">${n}　${w.title}</a>`));
-  rail.append(el(`<a href="#${w.id}" style="--c:${w.color}">
-      <div class="thumb"><img src="img/${w.cover[0]}" alt="" loading="lazy"></div>
-      <div class="cap"><span class="n">${n}</span><b>${w.title}</b><span>${w.short}</span></div></a>`));
+// 側邊分頁：封面、各作品、工具、關於
+const tab = (href, n, t, c, cls = '') => tabs.append(el(`<a class="tab ${cls}" href="${href}" style="--c:${c}" title="${t}"><span class="n">${n}</span><span class="t">${t}</span></a>`));
+tab('#top', '✦', '封面', '#3a4541', 'plain');
 
-  const next = WORKS[i + 1];
-  const gallery = w.gallery.length ? `
-      <div class="gallery-head"><span>GALLERY</span></div>
-      <div class="gallery">${w.gallery.map((g) => g.video
-        ? `<figure class="vid"><video src="video/${g.video}" poster="img/${g.poster}" controls preload="none" playsinline style="aspect-ratio:${g.ratio}"></video><figcaption>${g.cap}</figcaption></figure>`
-        : `<figure><img src="img/${g.src}" alt="${g.cap || w.title}" loading="lazy">${g.cap ? `<figcaption>${g.cap}</figcaption>` : ''}</figure>`).join('')}</div>` : '';
+WORKS.forEach((w, i) => {
+  const n = pad(i), next = WORKS[i + 1];
+  tab(`#${w.id}`, n, w.title, w.color);
+  index.append(el(`<a href="#${w.id}" data-n="${n}" style="--c:${w.color}"><div class="card">
+      <div class="thumb"><img src="img/${w.cover[0]}" alt="" loading="lazy"></div>
+      <div class="cap"><b>${w.title}</b><span>${w.short}</span></div></div></a>`));
+
+  // 作品內的圖片先放在 data-src，捲到附近再載入（避免手機上延遲載入失效）
+  const media = (g) => g.video
+    ? `<figure><video src="video/${g.video}" poster="img/${g.poster}" controls preload="none" playsinline style="aspect-ratio:${g.ratio}"></video><figcaption>${g.cap}</figcaption></figure>`
+    : `<figure><img data-src="img/${g.src}" alt="${g.cap || w.title}">${g.cap ? `<figcaption>${g.cap}</figcaption>` : ''}</figure>`;
   works.append(el(`
     <section class="work wrap" id="${w.id}" style="--c:${w.color}">
-      <div class="work-head reveal">
-        <div class="big-num">${n}</div>
-        <div><span class="kind">${w.kind}</span><h2>${w.title}</h2><div class="sub">${w.sub}</div></div>
+      <div class="folder">
+        <div class="folder-tab"><span class="n">${n}</span>${w.kind}</div>
+        <div class="folder-body">
+          <div class="work-head"><h2>${w.title}</h2><div class="sub">${w.sub}</div></div>
+          <div class="cover"><img data-src="img/${w.cover[0]}" alt="${w.title}：${w.cover[1]}"></div>
+          <div class="work-body">
+            <div>${w.text.map((p) => `<p>${p}</p>`).join('')}</div>
+            <dl class="facts">
+              ${w.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
+              ${w.links ? `<div class="btns">${w.links.map(([href, label], k) => `<a class="btn${k ? ' ghost' : ''}" href="${href}" target="_blank" rel="noopener">${label} ↗</a>`).join('')}</div>` : ''}
+            </dl>
+          </div>
+          ${w.gallery.length ? `<div class="gallery-title">GALLERY　·　左右滑動看更多</div><div class="gallery">${w.gallery.map(media).join('')}</div>` : ''}
+          <div class="next">${next ? `<a href="#${next.id}">下一件　<b>${pad(i + 1)} ${next.title}</b> →</a>` : `<a href="#tools">繼續看　<b>常用工具</b> →</a>`}</div>
+        </div>
       </div>
-      <div class="cover reveal"><img src="img/${w.cover[0]}" alt="${w.title}：${w.cover[1]}" loading="lazy"></div>
-      <div class="work-body reveal">
-        <div>${w.text.map((p) => `<p>${p}</p>`).join('')}</div>
-        <dl class="facts">
-          ${w.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
-          ${w.links ? `<div class="btns">${w.links.map(([href, label], k) => `<a class="btn${k ? ' ghost' : ''}" href="${href}" target="_blank" rel="noopener">${label} ↗</a>`).join('')}</div>` : ''}
-        </dl>
-      </div>
-      <div class="reveal">${gallery}</div>
-      <div class="next">${next
-        ? `<a href="#${next.id}">下一件作品 <b>${pad(i + 1)}　${next.title}</b> →</a>`
-        : `<a href="#tools">繼續看 <b>常用工具</b> →</a>`}</div>
     </section>`));
 });
+tab('#tools', '⚒', '常用工具', '#3a4541', 'plain');
+tab('#about', '✎', '關於我', '#3a4541', 'plain');
 
-// 作品目錄左右按鈕
-document.querySelectorAll('[data-scroll]').forEach((b) => b.addEventListener('click', () => {
-  const card = rail.querySelector('a');
-  rail.scrollBy({ left: Number(b.dataset.scroll) * (card.offsetWidth + 18), behavior: 'smooth' });
-}));
+// 圖片載入：作品區塊接近畫面時，一次載入該區所有圖片
+const loadIn = (root) => root.querySelectorAll('img[data-src]').forEach((img) => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+const loader = new IntersectionObserver((entries) => entries.forEach((e) => {
+  if (e.isIntersecting) { loadIn(e.target); loader.unobserve(e.target); }
+}), { rootMargin: '1200px 0px' });
+document.querySelectorAll('.work').forEach((s) => loader.observe(s));
+// 保險：頁面載入幾秒後把剩下的圖片都載入
+addEventListener('load', () => setTimeout(() => loadIn(document), 4000));
 
-// 捲動時標示目前作品
-const links = [...menu.querySelectorAll('a'), ...chips.querySelectorAll('a')];
-const spy = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (!e.isIntersecting) return;
-    links.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
-    const chip = chips.querySelector(`a[href="#${e.target.id}"]`);
-    if (chip && getComputedStyle(chips).display !== 'none') {
-      chips.scrollTo({ left: chip.offsetLeft - 16, behavior: 'smooth' });
-    }
-  });
-}, { rootMargin: '-45% 0px -50% 0px' });
-document.querySelectorAll('.work').forEach((s) => spy.observe(s));
-new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) links.forEach((a) => a.classList.remove('on'));
-}, { rootMargin: '-45% 0px -50% 0px' }).observe(document.getElementById('top'));
-
-// 進場動畫
-const rev = new IntersectionObserver((entries) => entries.forEach((e) => {
-  if (e.isIntersecting) { e.target.classList.add('in'); rev.unobserve(e.target); }
-}), { rootMargin: '0px 0px -8% 0px' });
-document.querySelectorAll('.reveal').forEach((r) => rev.observe(r));
+// 捲動到哪一區，對應的分頁就跳出來
+const tabLinks = [...tabs.querySelectorAll('.tab')];
+let current = '', peekTimer;
+const activate = (id) => {
+  if (id === current) return;
+  current = id;
+  tabLinks.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + id));
+  const on = tabs.querySelector('.tab.on');
+  if (on) { on.classList.add('peek'); clearTimeout(peekTimer); peekTimer = setTimeout(() => on.classList.remove('peek'), 1800); }
+};
+const spy = new IntersectionObserver((entries) => entries.forEach((e) => e.isIntersecting && activate(e.target.id)),
+  { rootMargin: '-45% 0px -50% 0px' });
+['top', ...WORKS.map((w) => w.id), 'tools', 'about'].forEach((id) => spy.observe(document.getElementById(id)));
 
 // 點圖片放大
 const box = document.getElementById('lightbox');
 document.addEventListener('click', (e) => {
   const img = e.target.closest('.cover img, .gallery img');
-  if (img) { box.querySelector('img').src = img.src; box.querySelector('img').alt = img.alt; box.classList.add('open'); return; }
+  if (img && img.src) { box.querySelector('img').src = img.src; box.querySelector('img').alt = img.alt; box.classList.add('open'); return; }
   if (e.target.closest('#lightbox')) box.classList.remove('open');
 });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') box.classList.remove('open'); });
